@@ -1,0 +1,19 @@
+{
+  "name": "image_resizer_app",
+  "productName": "Image Resizer",
+  "version": "1.0.0",
+  "description": "Image Resizing Electron App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Arnold Mosha",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^32.0.0"
+  },
+  "dependencies": {
+    "react-toastify": "^10.0.5",
+    "resize-img": "^2.0.0"
+  }
+}
