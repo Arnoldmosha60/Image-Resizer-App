@@ -5,7 +5,8 @@ const fs = require('fs');
 const resizeImg = require('resize-img');
 
 // condition to check if it is developer mode then to toggle devtools in the window
-const isDev = process.env.NODE_ENV !== 'development';
+process.env.NODE_ENV = 'production'; 
+const isDev = process.env.NODE_ENV !== 'production';
 
 // condition to check if it is a mac os
 const isMac = process.platform === 'darwin';
@@ -51,6 +52,9 @@ app.whenReady().then(() => {
     const mainMenu = Menu.buildFromTemplate(menu);
     Menu.setApplicationMenu(menu);
 
+    // remove mainWindow from memory onclose
+    mainWindow.on('closed', () => (mainWindow = null))
+
     //activate all windows
     app.on('activate', () => {
         if(BrowserWindow.getAllWindows().length === 0) {
@@ -92,7 +96,6 @@ ipcMain.on('image:resize', (e, options) => {
     console.log('Received options:', options);
     resizeImage(options);
 });
-
 
 
 // resize the image
